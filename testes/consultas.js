@@ -17,6 +17,7 @@ const db = require('../config/db')
 //        .finally(() => db.destroy())        
 
 db('perfis')
+    .select('id', 'nome')
     //.where({ id: 2 })
     //.first()
     //.where('id', '=', 2 )
