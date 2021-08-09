@@ -7,3 +7,13 @@ const novoUsuario = {
 }
 
 //update... db('...').where({...}).update({...})
+
+async function exercicio() {
+    // count
+    const qtde = await db('usuarios')
+        .count('* as qtde').first()
+}
+
+exercicio()
+    .then(usuario => console.log(usuario))
+    .finally(() => db.destroy())
