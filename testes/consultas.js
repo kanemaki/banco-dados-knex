@@ -12,5 +12,6 @@ const db = require('../config/db')
 
     db.select('nome', 'id')
         .from('perfis')
+        .limit(4).offset(2)
         .then(res => console.log(res))
         .finally(() => db.destroy())        
