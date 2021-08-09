@@ -18,5 +18,6 @@ const db = require('../config/db')
 
 db('perfis')
     .where({ id: 2 })
-    .then(res => console.log(res))
+    .first()
+    .then(res => console.log(res.nome))
     .finally(() => db.destroy()) 
