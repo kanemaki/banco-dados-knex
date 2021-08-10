@@ -1,7 +1,13 @@
 const db = require('../config/db')
 
 async function salvarUsuario(nome, email, senha) {
+    let usuario = await db('usuarios')
+        .where({ email }).first()
 
+        if(!usuario) {
+            let [ id ] = await db('usuarios')
+                .insert({ nome, email, senha })
+        }
 }
 
 async function salvarPerfil(nome, rotulo) {
