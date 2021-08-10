@@ -25,3 +25,5 @@ async function executar() {
 }
 
 executar()
+    .catch(err => console.log(err))
+    .finally(() => db.destroy())
