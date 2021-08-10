@@ -7,6 +7,8 @@ async function salvarUsuario(nome, email, senha) {
         if(!usuario) {
             let [ id ] = await db('usuarios')
                 .insert({ nome, email, senha })
+            usuario = await db('usuarios')
+                .where( { id } )    
         }
 }
 
