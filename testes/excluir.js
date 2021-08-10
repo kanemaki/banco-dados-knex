@@ -9,3 +9,10 @@ db('usuarios').where({ id: 1})
 // created_at
 // updated_at
 // deleted_at
+
+// excluir tudo
+db('perfis')
+    .delete()
+    .then()
+    .then(res => console.log(res))
+    .finally(() => db.destroy())
