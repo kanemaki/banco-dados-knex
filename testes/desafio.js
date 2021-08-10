@@ -21,4 +21,7 @@ async function executar() {
     console.log(perfilA)
     console.log(perfilB)
 
+    await adicionaPerfis(usuario, perfilA, perfilB)
 }
+
+executar()
