@@ -39,7 +39,11 @@ async function salvarPerfil(nome, rotulo) {
 }
 
 async function adicionaPerfis(usuario, ...perfis) {
-
+    for(perfil of perfis) {
+        const usuario_id = usuario.id
+        const perfil_id = perfil.id
+        const { qtde }
+    }
 }
 
 async function executar() {
