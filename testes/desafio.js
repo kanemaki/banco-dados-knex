@@ -4,12 +4,19 @@ async function salvarUsuario(nome, email, senha) {
     let usuario = await db('usuarios')
         .where({ email }).first()
 
-        if(!usuario) {
-            let [ id ] = await db('usuarios')
-                .insert({ nome, email, senha })
-            usuario = await db('usuarios')
-                .where( { id } ).first()    
-        }
+    if(!usuario) {
+        let [ id ] = await db('usuarios')
+            .insert({ nome, email, senha })
+        usuario = await db('usuarios')
+            .where( { id } ).first()    
+    } else {
+        await db('usuarios')
+            .where({ id: usuario.id})
+            .update({ nome, email, senha })
+        usuario = { ...usuario, nome, email, senha }           
+    }
+
+    return usuario
 }
 
 async function salvarPerfil(nome, rotulo) {
