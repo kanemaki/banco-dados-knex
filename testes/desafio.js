@@ -20,7 +20,22 @@ async function salvarUsuario(nome, email, senha) {
 }
 
 async function salvarPerfil(nome, rotulo) {
+    let perfil = await db('perfis')
+        .where({ nome }).first()
 
+    if(!perfil) {
+        let [ id ] = await db('perfis')
+            .insert({ nome, rotulo })
+        perfil = await db('perfis')
+            .where({ id }).first()                
+    } else {
+        await db('perfis')
+            .where({ id: perfil.id })
+            .update({ nome, rotulo })
+        perfil = { ...perfil, nome, rotulo }    
+    }
+
+    return perfil
 }
 
 async function adicionaPerfis(usuario, ...perfis) {
@@ -32,7 +47,7 @@ async function executar() {
     const perfilA = await salvarPerfil('rh', 'Pessoal')
     const perfilB = await salvarPerfil('fin', 'Financeiro')
 
-    console.log(ususario)
+    console.log(usuario)
     console.log(perfilA)
     console.log(perfilB)
 
