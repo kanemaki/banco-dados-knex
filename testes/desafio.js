@@ -39,10 +39,15 @@ async function salvarPerfil(nome, rotulo) {
 }
 
 async function adicionaPerfis(usuario, ...perfis) {
+    const usuario_id = usuario.id
+    await db('usuarios_perfis')
+        .where({ usuario_id })
+        .delete()
+    
     for(perfil of perfis) {
-        const usuario_id = usuario.id
         const perfil_id = perfil.id
-        const { qtde }
+        await db('usuarios_perfis')
+            .insert({ usuario_id, perfil_id })
     }
 }
 
