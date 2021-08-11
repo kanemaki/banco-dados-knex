@@ -8,7 +8,7 @@ async function salvarUsuario(nome, email, senha) {
             let [ id ] = await db('usuarios')
                 .insert({ nome, email, senha })
             usuario = await db('usuarios')
-                .where( { id } )    
+                .where( { id } ).first()    
         }
 }
 
