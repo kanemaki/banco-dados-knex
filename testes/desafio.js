@@ -52,9 +52,9 @@ async function adicionaPerfis(usuario, ...perfis) {
 }
 
 async function executar() {
-    const usuario = await salvarUsuario( 'Ana', 'ana@empresa.com.br', '123456')
-    const perfilA = await salvarPerfil('rh', 'Pessoal')
-    const perfilB = await salvarPerfil('fin', 'Financeiro')
+    const usuario = await salvarUsuario( 'Ana Silva', 'ana.silva@empresa.com.br', '123456')
+    const perfilA = await salvarPerfil('rh_1', 'Pessoal')
+    const perfilB = await salvarPerfil('fin_1', 'Financeiro')
 
     console.log(usuario)
     console.log(perfilA)
